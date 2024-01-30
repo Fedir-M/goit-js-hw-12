@@ -1,0 +1,215 @@
+/**
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
+@import url('./reset.css');
+@import url('./header.css');
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: #242424;
+  background-color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+/* ========= INPUT and BUTTON-SUBMIT ============= */
+
+.input__form {
+  display: flex;
+  justify-content: center;
+  column-gap: 8px;
+  margin-top: 20px;
+}
+
+.input__search {
+  width: 272px;
+  height: 40px;
+  padding: 8px 8px 8px 16px;
+
+  border-radius: 4px;
+  border: 1px solid #808080;
+
+  color: #808080;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+.input__search::placeholder {
+  color: #dfdede;
+}
+
+.input__search:hover {
+  border: 1.2px solid #000;
+}
+
+.input__search:focus {
+  outline: 1.2px solid #4e75ff;
+}
+
+button[type='submit'] {
+  width: 91px;
+  height: 40px;
+  padding: 8px 16px 8px 16px;
+
+  border-radius: 8px;
+  background: #4e75ff;
+  border: none;
+
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.64px;
+}
+
+button[type='submit']:hover,
+button[type='submit']:focus {
+  background: #6c8cff;
+}
+
+.text__loading {
+  margin-top: 8px;
+  text-align: center;
+
+  color: #dfdede;
+  font-family: Montserrat;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+.loader {
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 48px;
+  height: 48px;
+  border:10px solid #6c8cff;
+  border-radius: 50%;
+  position: relative;
+  transform:rotate(45deg);
+  box-sizing: border-box;
+}
+.loader::before {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+  inset:-10px;
+  border-radius: 50%;
+  border:10px solid #c1c714;
+  animation: prixClipFix 2s infinite linear;
+}
+
+@keyframes prixClipFix {
+    0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+    25%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+    50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+    75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
+    100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+}
+  
+.isHidden {
+  display: none;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1228px;
+  gap: 24px;
+  padding: 0 30px 30px 30px;
+  
+}
+
+.gallery__card {
+  position: relative;
+  width: calc((100% - 48px) / 3);
+  height: 260px;
+  border: 1px solid black;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gallery__card:hover,
+.gallery__card:focus {
+  border: 2px solid #6c8cff;
+  outline: none;
+}
+
+.gallery__card:hover .gallery__img {
+  transform: scale(1.04); 
+}
+
+.gallery__img {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 200px;
+  display: block;
+  cursor: pointer;
+  object-fit: cover;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card__text--list {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+
+.card__text--item {
+  padding: 6px 10px 6px 10px;
+}
+
+
+.card__item--title {
+  font-size: 14px;
+  font-style: normal;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 600;
+  text-align: center;
+}
+
+.card__item--value {
+  font-size: 16px;
+  font-style: normal;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
