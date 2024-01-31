@@ -37,6 +37,7 @@ async function onSearch(evt) {
     const data = await fetchImages(query, page, perPage);
 
     if (data.totalHits === 0) {
+      refs.loadMoreBtn.classList.add('isHidden');
       refs.gallery.innerHTML = '';
       iziToast.error({
         title: 'Sorry,',
@@ -52,14 +53,15 @@ async function onSearch(evt) {
 
       const galleryData = data.hits;
 
-      console.log(data);
 
       const galleryItems = galleryMarkup(galleryData).join('');
 
       refs.gallery.innerHTML = '';
       refs.gallery.insertAdjacentHTML('beforeend', galleryItems);
 
-      refs.loadMoreBtn.classList.remove('isHidden');
+     if(data.totalHits > perPage) {
+       refs.loadMoreBtn.classList.remove('isHidden');
+     }
 
       simplelightboxGallery = new SimpleLightbox('.gallery a').refresh();
 
@@ -75,11 +77,11 @@ async function onLoadMore() {
 
   onLoaderVisible();
 
-  refs.loadMoreBtn.classList.add('isHidden');
+ 
 
   try {
     const data = await fetchImages(query, page, perPage);
-
+    
     const totalPages = Math.ceil(data.totalHits / perPage);
 
       onLoaderUnVisible();

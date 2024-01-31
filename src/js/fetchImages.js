@@ -13,6 +13,7 @@ export async function fetchImages(keywords, page, perPage) {
         page,
         per_page: perPage
       });
+      
 
       const {data} = await axios.get(`${baseURL}?${params}`)
 
